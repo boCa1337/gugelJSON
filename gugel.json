@@ -1,0 +1,23 @@
+{
+	"gugel": 
+	[
+		{ 
+			"seitennr":"1", 
+			"titel":"Haushund - Wikipedia",
+			"kurztext": "Der Haushund (Canis lupus familiaris) ist ein Haustier und wird als Heim- und Nutztier gehalten. Seine wilde Stammform ist der Wolf, dem er als Unterart ...",
+			"url": "https://de.wikipedia.org/wiki/Haushund"
+		},
+		{ 
+			"seitennr":"2", 
+			"titel":"Alles zum Thema Hunde | RTL.de",
+			"kurztext": "Wie alt werden Hunde und welche Hunderasse passt zu Ihnen? Hunde picture alliance / blickwinkel. Neben der Katze ist der Hund das beliebteste Haustier der ...",
+			"url": "https://www.rtl.de/themen/thema/hunde-t10427.html"
+		},
+		{ 
+			"seitennr":"3", 
+			"titel":"Hauskatze - Wikipedia",
+			"kurztext": "Die Hauskatze (Felis catus) ist die Haustierform der Falbkatze. Sie zählt zu den beliebtesten Heimtieren. In der Rassekatzenzucht werden oft nur die Tiere als ...",
+			"url": "https://de.wikipedia.org/wiki/Hauskatze" 
+		}
+	]
+}

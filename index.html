@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gugel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<img class="logo-big" src="abbildungen/logo.jpg" alt="Gugel-Logo"></img>
+	<br>
+	<form id="searchForm" method="GET">
+		<input type="text" name="search" id="search" />
+		<br><br>
+		<button type="submit">Gugel-Suche</button>
+  </form>
+
+  <div id="results">
+  </div>
+  <script>
+    document.getElementById("searchForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const xhttp = new XMLHttpRequest();
+      const query = document.getElementById("search").value
+      const regexp = new RegExp(query, "i")
+      let htmlCode = ''
+      if (query === '') {
+        document.getElementById("results").innerHTML = '<br><span>Bitte Suchbegriff eingeben.</span><br><br>';
+      } else {
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            const jsonData = JSON.parse(this.responseText)
+            const result = jsonData['gugel'].filter(x => regexp.test(x.titel))
+            htmlCode = "<br><span>Ungefähr " + result.length + ` Ergebnis${result.length >= 2 ? 'se' : ''}</span><br><br>`
+            if (result.length > 0) {
+              result.forEach(element => {
+                htmlCode = htmlCode.concat(
+                  `<a class='title' href='${element.url}'>${element.titel}</a><br>
+                    <a class='url' href='${element.url}'>${element.url}</a><br>
+                    <span class='descr'>${element.kurztext}</span><br><br>`
+                )
+              })
+              document.getElementById("results").innerHTML = htmlCode;
+            } else {
+              document.getElementById("results").innerHTML = '<br><span>Keine Treffer.</span><br><br>';
+            }          
+          }
+        };
+        xhttp.open("GET", "gugel.json");
+        xhttp.send();
+      }      
+    });
+  </script>
+</body>
+</html>
